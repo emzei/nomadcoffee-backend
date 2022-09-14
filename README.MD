@@ -4,3 +4,7 @@ Instaclone Backend.
 
 How to run:
 <pre><code>npm run dev</code></pre>
+
+## Assignments : 
+- [x] 01. Setup Environment
+- [x] 02. User Model
