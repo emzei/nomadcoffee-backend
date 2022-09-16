@@ -8,3 +8,4 @@ How to run:
 ## Assignments : 
 - [x] 01. Setup Environment
 - [x] 02. User Model
+- [x] 03. Login, seeProfile, editProfile
