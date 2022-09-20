@@ -8,7 +8,6 @@ export default gql`
         name: String!
         location: String
         password: String!
-        avatarURL: String
         githubUsername: String
     ):User
   }

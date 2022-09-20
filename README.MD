@@ -8,5 +8,5 @@ How to run:
 ## Assignments : 
 - [x] 01. Setup Environment
 - [x] 02. User Model
-- [x] 03. Login, seeProfile, editProfile (*Failed to set Upload field for avatar)
+- [x] 03. Login, seeProfile, editProfile 
 - [x] 04. Follow/Unfollow User, See Followers/Following with Pagination, Computed Field, Search Users

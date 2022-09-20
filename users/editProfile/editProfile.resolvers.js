@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
 import client from "../../client";
 import { protectedResolver } from "../users.utils";
-
+import { createWriteStream } from "fs";
+import GraphQLUpload from "graphql-upload/GraphQLUpload.js";
 const resolverFn = async (
   _,
   {
@@ -10,11 +11,23 @@ const resolverFn = async (
     name,
     location,
     email,
-    avatarURL,
+    avatar,
     githubUsername,
   },
   { loggedInUser }
 ) => {
+  let avatarUrl = null;
+  if (avatar) {
+    const { filename, createReadStream } = await avatar;
+    const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+    const readStream = createReadStream();
+    const writeStream = createWriteStream(
+      process.cwd() + "/uploads/" + newFilename
+    );
+    readStream.pipe(writeStream);
+    avatarUrl = `http://localhost:${process.env.PORT}/static/${newFilename}`;
+  }
+  
   let uglyPassword = null;
   if (newPassword) {
     uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -29,9 +42,9 @@ const resolverFn = async (
       name,
       location,
       email,
-      avatarURL,
       githubUsername,
       ...(uglyPassword && { password: uglyPassword }),
+      ...(avatarUrl && { avatarURL:avatarUrl }),
     },
   });
 
@@ -51,4 +64,5 @@ export default {
   Mutation: {
     editProfile: protectedResolver(resolverFn),
   },
+  Upload: GraphQLUpload,
 };

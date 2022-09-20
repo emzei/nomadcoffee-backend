@@ -9,7 +9,6 @@ export default {
         name,
         location,
         password,
-        avatarURL,
         githubUsername 
     }) => {
       try {
