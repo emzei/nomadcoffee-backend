@@ -131,3 +131,4 @@ dist
 **/migration_lock.toml
 **/migration.sql
 package-lock.json
+uploads/*.*
