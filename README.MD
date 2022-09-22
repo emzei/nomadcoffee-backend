@@ -10,3 +10,6 @@ How to run:
 - [x] 02. User Model
 - [x] 03. Login, seeProfile, editProfile 
 - [x] 04. Follow/Unfollow User, See Followers/Following with Pagination, Computed Field, Search Users
+- [x] 05-1. Models; CoffeeShopPhoto, CoffeeShop, Category
+- [x] 05-2. Resolvers; createCoffeeShop,seeCoffeeShops,seeCoffeeShop,seeCategories,editCoffeeShop
+- [ ] 05-9. Resolver: seeCategory (not working yet)
