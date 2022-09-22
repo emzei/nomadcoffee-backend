@@ -13,3 +13,4 @@ How to run:
 - [x] 05-1. Models; CoffeeShopPhoto, CoffeeShop, Category
 - [x] 05-2. Resolvers; createCoffeeShop,seeCoffeeShops,seeCoffeeShop,seeCategories,editCoffeeShop
 - [ ] 05-9. Resolver: seeCategory (not working yet)
+- [x] 06. Distribution (heroku)

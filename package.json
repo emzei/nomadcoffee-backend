@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "nodemon --exec babel-node server",
+    "dev": "nodemon --exec babel-node src/server --delay 2",
     "migrate": "npx prisma migrate dev",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "build": "babel src --out-dir build",
+    "start": "node build/server"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/emzei/nomadcoffee-backend#readme",
   "dependencies": {
+    "@babel/cli": "^7.18.10",
     "@graphql-tools/load-files": "^6.5.4",
     "@graphql-tools/merge": "^8.2.15",
     "@graphql-tools/schema": "^8.4.0",
@@ -37,6 +40,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/node": "^7.18.5",
+    "@babel/plugin-transform-runtime": "^7.19.1",
     "@babel/preset-env": "^7.18.2",
     "@types/node": "^18.0.0",
     "nodemon": "^2.0.16",

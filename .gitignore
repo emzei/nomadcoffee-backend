@@ -132,3 +132,4 @@ dist
 **/migration.sql
 package-lock.json
 uploads/*.*
+build/*
