@@ -3,20 +3,16 @@ import client from "../../client";
 
 export default {
   Mutation: {
-    createAccount: async (_, { 
-        username,
-        email,
-        name,
-        location,
-        password,
-        githubUsername 
-    }) => {
+    createAccount: async (
+      _,
+      { username, email, name, location, password, githubUsername }
+    ) => {
       try {
         const existingUser = await client.user.findFirst({
           where: {
             OR: [
               {
-                username, 
+                username,
               },
               {
                 email,
@@ -26,25 +22,35 @@ export default {
         });
 
         if (existingUser) {
-            console.log(existingUser);
-            throw new Error("This username/email is already taken.");
+          console.log(existingUser);
+          return {
+            ok: false,
+            error: "This username/email is already taken.",
+          };
+          //throw new Error("This username/email is already taken.");
         }
-
+        
         const uglyPassword = await bcrypt.hash(password, 10);
 
-        return client.user.create({
-            data: {
-                username,
-                email,
-                name,
-                location,
-                password: uglyPassword,
-                githubUsername 
-            },
-          });
-      } catch(e) {
+        await client.user.create({
+          data: {
+            username,
+            email,
+            name,
+            location,
+            password: uglyPassword,
+            githubUsername,
+          },
+        });
+        return {
+          ok: true,
+        };
+      } catch (e) {
         console.log(e);
-        return e;
+        return {
+          ok: false,
+          error: "Can't create account",
+        };
       }
     },
   },
