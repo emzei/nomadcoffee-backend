@@ -39,7 +39,6 @@ export default {
                 name,
                 location,
                 password: uglyPassword,
-                avatarURL,
                 githubUsername 
             },
           });
